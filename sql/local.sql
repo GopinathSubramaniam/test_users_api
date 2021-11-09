@@ -16,6 +16,31 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`bank_users` /*!40100 DEFAULT CHARACTER 
 
 USE `bank_users`;
 
+/*Table structure for table `loan` */
+
+DROP TABLE IF EXISTS `loan`;
+
+CREATE TABLE `loan` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `loan_number` varchar(20) NOT NULL,
+  `applied_date` date DEFAULT NULL,
+  `loan_amount` decimal(10,2) DEFAULT NULL,
+  `interest_percentage` int(10) DEFAULT NULL,
+  `total_amount` decimal(10,2) DEFAULT NULL,
+  `loan_periods` int(20) DEFAULT NULL,
+  `start_date` date DEFAULT NULL,
+  `end_date` date DEFAULT NULL,
+  `desc` varchar(150) DEFAULT NULL,
+  `status` varchar(1) DEFAULT 'A',
+  `user_id` varchar(20) NOT NULL,
+  `created_date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `modified_date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `loan_number` (`loan_number`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+/*Data for the table `loan` */
+
 /*Table structure for table `user` */
 
 DROP TABLE IF EXISTS `user`;
