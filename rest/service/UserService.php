@@ -157,14 +157,13 @@ class UserService
 
         $sql = "DELETE FROM user WHERE id='$id'";
         if (mysqli_query($conn, $sql)) {
-            if (Util::commitTrans($conn) == 1) {
+            if (Util::commitTransAndCloseConn($conn) == 1) {
                 $json = Util::setSuccess();
             } else {
                 mysqli_rollback($conn);
                 $json = Util::setError("Error Occurred.");
             }
         }
-        mysqli_close($conn);
         return $json;
     }
 }
