@@ -36,7 +36,8 @@ class LoanService
         $result = array();
 
         $conn = Util::getConn();
-        $sql = "SELECT * FROM loan";
+        $sql = "SELECT l.*, u.name user_name FROM loan l
+                INNER JOIN user u ON u.id = l.user_id";
         $data_query = mysqli_query($conn, $sql);
         if (mysqli_num_rows($data_query)) {
             while ($r = mysqli_fetch_array($data_query, MYSQLI_ASSOC)) {
